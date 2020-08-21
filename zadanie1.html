@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .btn {
+            height: 50px;
+            width: 150px;
+            border: 2px dashed;
+            font-size: 20px;
+            background-color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px auto;
+            display: block;
+        }
+
+        div {
+            height: 30px;
+            width: 30px;
+            margin: 10px;
+            text-align: center;
+            line-height: 30px;
+            background-color: black;
+            color: white;
+            float: left;
+        }
+
+        .circle {
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">Kliknij</button>
+
+    <script>
+        const btn = document.querySelector('.btn');
+        let number = 1;
+        let activeNumber = 1;
+        //ta zmienna jest potrzebna, gdybyśmy w instrukcji warunkowej nie chcieli korzystać z modulo
+
+        function addDiv() {
+            const div = document.createElement('div');
+            div.textContent = number;
+            if (number % 5 == 0) {
+                div.classList.add('circle');
+            }
+
+            /*  if (activeNumber == 5) {
+                 activeNumber = 0;
+                 div.classList.add('circle');
+             } */ //drugi sposób (bez modulo)
+            document.body.appendChild(div);
+            number++;
+            //activeNumber++;
+        }
+
+        btn.addEventListener('click', addDiv);
+    </script>
+</body>
+
+</html>
