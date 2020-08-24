@@ -6,27 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zadanie 2</title>
     <style>
-        .big {
-            font-size: 30px;
+        body {
+            height: 10000vh;
+        }
+
+        div {
+            background-color: black;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
 </head>
 
 <body>
-    <button>Dodaj element listy</button>
-    <ul></ul>
-
     <script>
-        const btn = document.querySelector('button');
-        let number = 1;
-        btn.addEventListener('click', function () {
-            const newLi = document.createElement('li');
-            newLi.textContent = number;
-            if (number % 3 == 0) {
-                newLi.classList.add('big');
+        const div = document.createElement('div');
+        document.body.appendChild(div);
+        let size = 100; // wielkość początkowa kwadratu
+        div.style.width = size + "px";
+        div.style.height = size + "px";
+
+        // MOJA PRÓBA
+        /* const toLowDiv = function () {
+            size -= 5;
+            div.style.width = size + "px";
+            div.style.height = size + "px";
+            if (size == 0) {
+                removeEventListener('scroll', toLow);
+                addEventListener('scroll', growUpDiv);
             }
-            document.querySelector('ul').appendChild(newLi);
-            number += 2;
+        }
+
+        const growUpDiv = function () {
+            if (size < window.innerWidth * 0.5) {
+                size += 5;
+                div.style.width = size + "px";
+                div.style.height = size + "px";
+            } else {
+                removeEventListener('scroll', growUpDiv);
+                addEventListener('scroll', toLow);
+            }
+        } */
+
+        window.addEventListener('scroll', growUpDiv);*/
+
+        //window.innerWidth * 0.5 //tak możemy uzyskać maksymalną wielkość wskazanego elementu
+
+        //---------------------------------------//
+        //SPOSÓB Z FLAGAMI (WG SAMURAJA)
+        let grow = true // flaga 
+        window.addEventListener('scroll', function () {
+            if (size >= window.innerWidth / 2 || size <= 0) {
+                grow = !grow;
+            }
+            /* else if (size == 0) {
+                           grow = !grow;
+                       } */
+
+            if (grow) {
+                size += 5;
+                div.style.width = size + "px";
+                div.style.height = size + "px";
+            } else {
+                size -= 5;
+                div.style.width = size + "px";
+                div.style.height = size + "px";
+            }
         })
     </script>
 </body>

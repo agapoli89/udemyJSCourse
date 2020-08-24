@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 2a</title>
+
+</head>
+
+<body>
+    <script>
+        let size = 20;
+        document.body.style.height = 10000 + 'px';
+        document.body.style.margin = 0;
+        const div = document.createElement('div');
+        document.body.appendChild(div);
+        div.style.width = '100%';
+        div.style.backgroundColor = 'green';
+        div.style.position = 'fixed';
+        div.style.left = 0;
+        div.style.top = 0;
+        div.style.height = size + 'px';
+        let grow = true;
+
+        function changeHeight() {
+            if (size > (window.innerHeight /
+                    2) || size <= 0) {
+                grow = !grow;
+            }
+
+            if (grow) {
+                size += 5;
+                div.style.backgroundColor = 'green';
+            } else {
+                size -= 5;
+                div.style.backgroundColor = 'red';
+            }
+            div.style.height = size + 'px';
+        }
+
+        window.addEventListener('scroll', changeHeight);
+    </script>
+</body>
+
+</html>
