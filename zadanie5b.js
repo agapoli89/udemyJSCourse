@@ -19,7 +19,7 @@ const messages = ['Super!', 'Działa!'];
 } */
 
 //lub
-passwords.forEach((password, i) => {
+/* passwords.forEach((password, i) => {
     passwords[i] = password.toLowerCase();
 });
 
@@ -32,13 +32,22 @@ const showMessage = e => {
             e.target.value = '';
         }
     })
-};
-
-input.addEventListener('input', showMessage);
+}; */
 
 //lub
+const LCPasswords = passwords.map(password => password.toLowerCase());
 
+const showMessage = (e) => {
+    const textInput = e.target.value.toLowerCase();
 
+    for (let i = 0; i < LCPasswords.length; i++) {
+        if (textInput === LCPasswords[i]) {
+            div.innerHTML = messages[i];
+        }
+    }
+}
+
+input.addEventListener('input', showMessage);
 
 const blackInput = input.addEventListener('focus', () => {
     input.classList.add('active')
