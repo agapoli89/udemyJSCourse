@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 6c</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">Dodaj możliwość</label>
+        <input type="text">
+        <button class="add">Dodaj</button>
+        <button class="clean">Resetuj</button>
+    </form>
+    <h2>Wypadnie na........</h2>
+    <button class="showOne">Pokaż co wypadło</button>
+    <button class="showAll">Pokaż możliwości</button>
+    <h1></h1>
+
+    <script>
+        const items = [];
+        const add = document.querySelector('.add');
+        const clean = document.querySelector('.clean');
+        const showOne = document.querySelector('.showOne');
+        const showAll = document.querySelector('.showAll');
+        const input = document.querySelector('input');
+        const h1 = document.querySelector('h1');
+
+        add.addEventListener('click', (e) => {
+            e.preventDefault();
+            const addItem = input.value;
+            items.push(addItem);
+            console.log(items);
+        })
+
+        clean.addEventListener('click', (e) => {
+            e.preventDefault();
+            items = [];
+        })
+
+        showOne.addEventListener('click', (e) => {
+            e.preventDefault();
+            const index = Math.floor(Math.random() * items.length);
+            h1.textContent = `Tym razem wypadło na ${items[index]}`
+        });
+    </script>
+</body>
+
+</html>

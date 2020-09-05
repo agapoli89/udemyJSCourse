@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 6b</title>
+    <style>
+        body * {
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="text">
+        <button>Dodaj imię</button>
+    </form>
+    <div></div>
+    <script>
+        names = [];
+        const div = document.querySelector('div');
+
+        const addName = (e) => {
+            e
+                .preventDefault(); //metoda powstrzymująca domyślne działanie programu, w tym przypadku, po kliknięciu na button nie odświeża nam strony
+            const input = document.querySelector('input');
+            const name = input.value;
+
+            if (input.value.length) {
+                for (oneName of names) {
+                    if (oneName.toLowerCase === name.toLowerCase) {
+                        alert("To imię już jest!");
+                        input.value = '';
+                        return;
+                    }
+                }
+                names.push(name);
+                console.log(names);
+                div.textContent += name + ', ';
+                input.value = '';
+            }
+        }
+
+        document.querySelector('button').addEventListener('click', addName);
+    </script>
+</body>
+
+</html>

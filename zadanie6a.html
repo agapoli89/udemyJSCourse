@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>Zadanie 6a</title>
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        button,
+        section {
+            margin: 50px auto;
+        }
+
+        button {
+            display: block;
+            width: 400px;
+            height: 50px;
+            background-color: white;
+            border: 3px solid green;
+            font-size: 20px;
+        }
+
+        div {
+            width: 400px;
+            text-align: center;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>Wygeneruj 1000 różnych kodów</button>
+    <section>
+    </section>
+    <script>
+        const btn = document.querySelector('button');
+        const section = document.querySelector('section');
+        const chars = 'ABCDEFGHIJK123456789';
+        const codesNumber = 1000;
+        const charsNumber = 10;
+
+        btn.addEventListener('click', () => {
+
+            for (let i = 0; i < codesNumber; i++) {
+                let code = "";
+                for (let i = 0; i < charsNumber; i++) {
+                    const index = Math.floor(Math.random() * chars.length);
+                    code += chars[index];
+                }
+
+                const div = document.createElement('div');
+                div.textContent = code;
+                section.appendChild(div);
+            }
+        })
+    </script>
+</body>
+
+</html>
