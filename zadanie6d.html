@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 6d</title>
+</head>
+
+<body>
+    <h1>Liczba losowa od ... do ... </h1>
+    <script>
+        //Math.floor(Math.random() * (wartość maksymalna - wartość minimalna) + wartość minimalna)
+
+        //funkcja znajdująca losową liczbę całkowitą z przedziału od MIN do MAX-1 
+
+        const numberRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
+
+        //funkcja znajdująca losową liczbę całkowitą z przedziału od MIN do MAX (włącznie)
+
+        const numberRandomTwo = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+    </script>
+
+</body>
+
+</html>

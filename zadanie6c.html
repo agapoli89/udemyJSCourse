@@ -20,31 +20,45 @@
     <h1></h1>
 
     <script>
-        const items = [];
-        const add = document.querySelector('.add');
-        const clean = document.querySelector('.clean');
-        const showOne = document.querySelector('.showOne');
-        const showAll = document.querySelector('.showAll');
-        const input = document.querySelector('input');
+        const items = ['nie wiem', 'tym razem chyba Ci nie pomogę'];
         const h1 = document.querySelector('h1');
 
-        add.addEventListener('click', (e) => {
+        document.querySelector('.add').addEventListener('click', (e) => {
             e.preventDefault();
-            const addItem = input.value;
-            items.push(addItem);
-            console.log(items);
+            const input = document.querySelector('input');
+            if (input.value) {
+                for (item of items) {
+                    if (input.value.toLowerCase() === item.toLowerCase()) {
+                        alert('ta wartość się powtarza');
+                        input.value = '';
+                        return;
+                    }
+                }
+                const addItem = input.value;
+                items.push(addItem);
+                console.log(items);
+                input.value = '';
+                alert(`Dodano: ${addItem}`);
+            } else {
+                alert('Coś poszło nie tak, spróbuj wpisać wartość jeszcze raz');
+            }
         })
 
-        clean.addEventListener('click', (e) => {
+        document.querySelector('.clean').addEventListener('click', (e) => {
             e.preventDefault();
-            items = [];
+            items.length = 0;
+            h1.textContent = '';
         })
 
-        showOne.addEventListener('click', (e) => {
-            e.preventDefault();
+        document.querySelector('.showOne').addEventListener('click', () => {
             const index = Math.floor(Math.random() * items.length);
-            h1.textContent = `Tym razem wypadło na ${items[index]}`
+            h1.textContent = `Tym razem wypadło na: ${items[index]}`;
         });
+
+        document.querySelector('.showAll').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert(`Twoje możliwości to: ${items.join(', ')}`);
+        })
     </script>
 </body>
 
