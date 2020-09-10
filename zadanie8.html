@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <title>Zadanie 8</title>
+    <style>
+        div {
+            font-family: 'Source Code Pro', monospace;
+            max-width: 80%;
+            margin: 20% auto;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .cursor {
+            opacity: 0;
+            transition: .2s;
+        }
+
+        .cursor.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="text"></span><span class="cursor">|</span>
+    </div>
+
+    <script>
+        const myText =
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rutrum lectus et fermentum fermentum. Vestibulum pellentesque, risus quis dignissim bibendum, metus enim consectetur ante, sed tristique nibh turpis et ligula.";
+
+        const textSpan = document.querySelector('.text');
+        const cursor = document.querySelector('.cursor');
+        let index = 0;
+
+        //moja próba (setTimeout)
+        /* function addLetter() {
+            if (index < myText.length)
+                textSpan.textContent += myText[index];
+            index++;
+            setTimeout(addLetter, 50);
+        } */
+        //setTimeout(addLetter, 1000);
+
+
+        //rozwiązanie Samuraja
+        function addLetter() {
+            textSpan.textContent += myText[index];
+            index++;
+            if (index === myText.length) clearInterval(indexTyping);
+        }
+
+        function cursorMove() {
+            cursor.classList.toggle('active');
+        }
+
+        const indexTyping = setInterval(addLetter, 100);
+        setInterval(cursorMove, 400);
+    </script>
+</body>
+
+</html>
