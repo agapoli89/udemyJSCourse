@@ -23,7 +23,7 @@ const addLetter = () => {
             if (index == txt.length) {
                 return;
             } else {
-                return setTimeout(() => {
+                setTimeout(() => {
                     textIndex = -3;
                     spnText.textContent = '';
                     addLetter();
